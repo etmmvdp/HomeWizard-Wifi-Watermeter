@@ -147,7 +147,7 @@ class BasePlugin:
 
     def readMeter(self):
         try:
-            APIdata = urllib.request.urlopen("http://" + Parameters["Address"] + ":" + Parameters["Port"] + "/api/v1/data").read()
+            APIdata = urllib.request.urlopen("http://" + Parameters["Address"] + ":" + Parameters["Port"] + "/api/v1/data", timeout=self.pluginInterval/2).read()
         except:
             Domoticz.Error("Failed to communicate with Wi-Fi Watermeter at ip " + Parameters["Address"] + " with port " + Parameters["Port"])
             return False
